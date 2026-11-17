@@ -158,7 +158,7 @@ if _static_dir.is_dir() and (_static_dir / "index.html").exists():
     app.mount("/assets", StaticFiles(directory=_static_dir / "assets"), name="assets")
 
     # SPA fallback: any non-API path returns index.html so client-side routing works.
-    @app.get("/{full_path:path}", include_in_schema=False)
+    @app.get("/{full_path:path}", include_in_schema=False, response_model=None)
     async def spa_fallback(full_path: str, request: Request) -> FileResponse | JSONResponse:
         if full_path.startswith("api/"):
             return JSONResponse({"detail": "Not Found"}, status_code=404)
