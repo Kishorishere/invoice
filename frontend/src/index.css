@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light — subtle sage/cream background, near-white surfaces, dark charcoal primary */
+    --background: 72 14% 88%;         /* light sage */
+    --foreground: 60 8% 14%;
+
+    --card: 60 20% 98%;               /* near-white, slightly warm */
+    --card-foreground: 60 8% 14%;
+
+    --popover: 60 20% 98%;
+    --popover-foreground: 60 8% 14%;
+
+    --primary: 60 8% 20%;             /* dark warm charcoal */
+    --primary-foreground: 60 20% 98%;
+
+    --secondary: 72 10% 85%;
+    --secondary-foreground: 60 8% 18%;
+
+    --muted: 72 12% 85%;
+    --muted-foreground: 60 6% 42%;
+
+    --accent: 72 10% 85%;
+    --accent-foreground: 60 8% 18%;
+
+    --destructive: 6 60% 46%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 32% 32%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 32 72% 42%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 72 10% 80%;
+    --input: 72 10% 80%;
+    --ring: 60 10% 32%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 80 8% 9%;
+    --foreground: 60 20% 94%;
+
+    --card: 80 8% 13%;
+    --card-foreground: 60 20% 94%;
+
+    --popover: 80 8% 13%;
+    --popover-foreground: 60 20% 94%;
+
+    --primary: 60 20% 92%;            /* flipped: cream becomes the pop in dark */
+    --primary-foreground: 80 8% 12%;
+
+    --secondary: 80 8% 18%;
+    --secondary-foreground: 60 20% 92%;
+
+    --muted: 80 8% 16%;
+    --muted-foreground: 72 12% 62%;
+
+    --accent: 80 8% 18%;
+    --accent-foreground: 60 20% 92%;
+
+    --destructive: 6 68% 56%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 38% 48%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 32 78% 55%;
+    --warning-foreground: 80 8% 10%;
+
+    --border: 80 8% 20%;
+    --input: 80 8% 20%;
+    --ring: 60 20% 72%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    min-height: 100dvh;
+  }
+
+  /* Very subtle grain so the sage background doesn't read flat */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image: radial-gradient(hsl(60 10% 45% / 0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .dark body::before {
+    background-image: radial-gradient(hsl(60 15% 80% / 0.04) 1px, transparent 1px);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .ring-focus {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
