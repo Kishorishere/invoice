@@ -1,0 +1,43 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# --- uv ---
+# Keep uv.lock in VCS; ignore cache dirs
+.uv/
+
+# --- Node ---
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.log
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# --- App ---
+.env
+.env.local
+.env.*.local
+data/
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+uploads/
+
+# --- Docker ---
+*.pid

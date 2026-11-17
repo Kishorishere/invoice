@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: invoice-extractor:local
+    container_name: invoice-extractor
+    ports:
+      - "3004:3004"
+    environment:
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      JWT_SECRET: ${JWT_SECRET:-change-me-change-me-change-me}
+      CORS_ORIGINS: ""
+    volumes:
+      - app-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  app-data:
