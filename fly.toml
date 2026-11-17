@@ -1,41 +1,42 @@
-# Fly.io config. Run `fly launch --no-deploy` once to attach to your account,
-# then `fly deploy`. See README for the full walk-through.
+# fly.toml app configuration file generated for invoice-extractor-glimmering-breeze-573 on 2026-11-17T08:31:18+05:45
+#
+# See https://docs.fly.io/reference/configuration for information about how to use this file.
+#
 
-app = "invoice-extractor"        # rename after `fly launch`
-primary_region = "fra"            # Frankfurt — close to Deutschelink / GDPR region
+app = 'invoice-extractor-glimmering-breeze-573'
+primary_region = 'fra'
 
 [build]
-  dockerfile = "Dockerfile"
+  dockerfile = 'Dockerfile'
+
+[deploy]
+  strategy = 'rolling'
 
 [env]
-  STATIC_DIR = "/app/static"
-  UPLOAD_DIR = "/app/data/uploads"
-  DATABASE_URL = "sqlite:////app/data/app.db"
-  CORS_ORIGINS = ""
-  # Fly serves over HTTPS — the session cookie should refuse HTTP.
-  COOKIE_SECURE = "true"
+  COOKIE_SECURE = 'true'
+  CORS_ORIGINS = ''
+  DATABASE_URL = 'sqlite:////app/data/app.db'
+  STATIC_DIR = '/app/static'
+  UPLOAD_DIR = '/app/data/uploads'
 
 [[mounts]]
-  source = "invoice_data"
-  destination = "/app/data"
+  source = 'invoice_data'
+  destination = '/app/data'
 
 [http_service]
   internal_port = 3004
   force_https = true
-  auto_stop_machines = "stop"
+  auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
-  processes = ["app"]
+  processes = ['app']
 
   [http_service.concurrency]
-    type = "requests"
+    type = 'requests'
     hard_limit = 50
     soft_limit = 25
 
 [[vm]]
-  memory = "512mb"
-  cpu_kind = "shared"
+  memory = '512mb'
   cpus = 1
-
-[deploy]
-  strategy = "rolling"
+  memory_mb = 512
