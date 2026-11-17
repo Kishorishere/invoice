@@ -6,7 +6,7 @@ A production-shaped take on the "extract an invoice to JSON" task — a FastAPI 
 
 Single container, single `fly deploy`.
 
-![screenshot placeholder — replace with a real one after deploy](./docs/screenshot.png)
+**Live demo:** [invoice-extractor-glimmering-breeze-573.fly.dev](https://invoice-extractor-glimmering-breeze-573.fly.dev/) &middot; sign in with `admin@invoice.ai` / `Test@123`.
 
 ---
 
