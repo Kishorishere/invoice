@@ -44,8 +44,10 @@ WORKDIR /app
 # Python environment
 COPY --from=backend-deps /app/.venv /app/.venv
 
-# Backend source
+# Backend source + Alembic migrations (required by init_db on startup)
 COPY backend/app /app/app
+COPY backend/alembic /app/alembic
+COPY backend/alembic.ini /app/alembic.ini
 COPY backend/pyproject.toml /app/pyproject.toml
 
 # Built frontend
